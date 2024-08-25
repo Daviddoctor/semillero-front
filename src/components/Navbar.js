@@ -12,6 +12,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const router = useRouter();
 
     const handleMenu = (event) => {
@@ -73,21 +74,39 @@ const Navbar = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                     >
-                        <MenuItem onClick={handleClose}>
-                            <Link href="/perfil" passHref>
-                                <Button color="inherit">Perfil</Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
-                            <Link href="/configuracion" passHref>
-                                <Button color="inherit">Configuración</Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
-                            <Link href="/logout" passHref>
-                                <Button color="inherit">Cerrar sesión</Button>
-                            </Link>
-                        </MenuItem>
+                        {isAuthenticated ? (
+                            [
+                                <MenuItem key="perfil" onClick={handleClose}>
+                                    <Link href="/perfil" passHref>
+                                        <Button color="inherit">Perfil</Button>
+                                    </Link>
+                                </MenuItem>,
+                                <MenuItem key="configuracion" onClick={handleClose}>
+                                    <Link href="/configuracion" passHref>
+                                        <Button color="inherit">Configuración</Button>
+                                    </Link>
+                                </MenuItem>,
+                                <MenuItem key="logout" onClick={handleClose}>
+                                    <Link href="/logout" passHref>
+                                        <Button color="inherit">Cerrar sesión</Button>
+                                    </Link>
+                                </MenuItem>
+                            ]
+                        ) : (
+                            [
+                                <MenuItem key="login" onClick={handleClose}>
+                                    <Link href="/login" passHref>
+                                        <Button color="inherit">Inicio de Sesión</Button>
+                                    </Link>
+                                </MenuItem>,
+                                <MenuItem key="registro" onClick={handleClose}>
+                                    <Link href="/registro" passHref>
+                                        <Button color="inherit">Registro</Button>
+                                    </Link>
+                                </MenuItem>
+                            ]
+                        )}
+
                     </Menu>
                 </div>
             </Toolbar>

@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/globals.css';
+import '../styles/Carousel.module.css';
+import '../styles/Experiences.module.css';
 import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {

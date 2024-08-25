@@ -1,0 +1,19 @@
+.slick-prev, .slick-next {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slick-prev:hover, .slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    color: white;
+    font-size: 20px;
+  }
